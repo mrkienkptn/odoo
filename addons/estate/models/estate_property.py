@@ -3,12 +3,13 @@ from dateutil.relativedelta import relativedelta
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Test Model"
+    _order = "id desc"
     name = fields.Char(required=True, default="Unknown")
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date('Availability Date', copy=False, default= lambda self :fields.Datetime.today() + relativedelta(days=90))
-    expected_price = fields.Float(required = True)
-    selling_price = fields.Float(required=True, readonly=True, default=100.0)
+    expected_price = fields.Float(required = True, default=100.0)
+    selling_price = fields.Float(required=True, readonly=True, default=100)
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
     facades = fields.Integer()
@@ -21,14 +22,14 @@ class EstateProperty(models.Model):
     )
     active = fields.Boolean('Active', default=True)
     state = fields.Selection(
-        string = 'State',
-        selection = [('new','New'), ('offer_received','Offer Received'), ('offer_accepted','Offer Accepted'), ('sold','Sold'), ('canceled','Canceled')],         
+        string = 'Status',
+        selection = [('new','New'), ('offer_received','Offer Received'), ('offer_accepted','Offer Accepted'), ('sold','Sold'), ('canceled','Canceled'),],         
         default = 'new',
-        store = True
+        required = True
     )
     buyer_id = fields.Many2one('res.partner', string='Buyer')
     seller_id = fields.Many2one('res.users', string='Saleman', default=lambda self: self.env.user)
-    property_type_id = fields.Many2one("estate.property.type", string = "Type")
+    property_type_id = fields.Many2one("estate.property.type", string = "Type", required="True")
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", inverse_name="property_id",string = "Offers")
     total_area = fields.Integer(compute="_compute_total_area")
@@ -60,9 +61,7 @@ class EstateProperty(models.Model):
         if self.garden == False:
             self.garden_area = 0
             self.garden_orientation=''
-            return {'warning': {
-                'title': _("Warning"),
-                'message': ('This option reset to 0')}}
+
         else:
             self.garden_area = 10
             self.garden_orientation='south'
@@ -84,8 +83,9 @@ class EstateProperty(models.Model):
                 record.state = 'canceled'
         return True
 
-    @api.constrains("selling_price")
-    def _check_selling_price(self):
-        for record in self:
-            if record.selling_price < record.expected_price * 0.9:
-                raise exceptions.UserError("Selling price must be at least 90% of Expected price")
+    
+    def unlink(self):
+        
+        if self.state not in ('new', 'canceled'):
+            raise exceptions.UserError("Only new or canceled property can be deleted")
+        return super(EstateProperty, self).unlink()
