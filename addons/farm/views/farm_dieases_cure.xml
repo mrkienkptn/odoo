@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="farm_dieases_cure_action" model="ir.actions.act_window">
+        <field name="name">Dieases Cure</field>
+        <field name="res_model">farm.dieases.cure</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+    <record id="farm_dieases_cure_view_tree" model="ir.ui.view">
+        <field name="name">farm.dieases.cure.tree</field>
+        <field name="model">farm.dieases.cure</field>
+        <field name="arch" type="xml">
+            <tree string="Dieases Cure">
+                <!-- <field name="name" /> -->
+                <!-- <field name="buyer" />
+                <field name="seller" /> -->
+            </tree>
+        </field>
+    </record>
+    
+</odoo>

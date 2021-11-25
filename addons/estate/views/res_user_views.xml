@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="res_user_view_form" model="ir.ui.view">
+            <field name="name">res.users.view.form.inherit.estate.property</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//" position="inside"> -->
+                    <notebook position="inside">
+                        <page string="Estate Properties">
+                            <field name="property_ids">
+                                <field name="name" />
+                            </field>
+                        </page>
+                    </notebook>
+                <!-- </xpath> -->
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

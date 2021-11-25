@@ -1,0 +1,9 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_test_model,model_res_country_state,model_res_country_state,base.group_user,1,1,1,1
+access_farm_crop_requests,access_farm_crop_requests,model_farm_crop_requests,base.group_user,1,1,1,1
+access_farm_crops,access_farm_crops,model_farm_crops,base.group_user,1,1,1,1
+access_farm_incidents,access_farm_incidents,model_farm_incidents,base.group_user,1,1,1,1
+access_farm_dieases_cure,access_farm_dieases_cure,model_farm_dieases_cure,base.group_user,1,1,1,1
+access_projects,access_farm_projects,model_farm_projects,base.group_user,1,1,1,1
+access_configuration,access_farm_configuration,model_farm_configuration,base.group_user,1,1,1,1
+access_res_partner,access_res_partner,model_res_partner,base.group_user,1,1,1,1

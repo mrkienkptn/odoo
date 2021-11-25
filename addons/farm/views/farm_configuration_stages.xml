@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="farm_configuration_stages_action" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="res_model">farm.configuration</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+    <record id="farm_configuration_view_tree" model="ir.ui.view">
+        <field name="name">farm.configuration.tree</field>
+        <field name="model">farm.configuration</field>
+        <field name="arch" type="xml">
+            <tree string="Stages">
+                <!-- <field name="name" /> -->
+                <!-- <field name="buyer" />
+                <field name="seller" /> -->
+            </tree>
+        </field>
+    </record>
+    
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="farm_configuration_fleets_action" model="ir.actions.act_window">
+        <field name="name">Fleets</field>
+        <field name="res_model">farm.configuration</field>
+        <field name="view_mode">kanban,tree,form</field>
+
+    </record>
+    <record id="farm_configuration_fleets_view_tree" model="ir.ui.view">
+        <field name="name">farm.configuration.tree</field>
+        <field name="model">farm.configuration</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="farmer_name" />
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>

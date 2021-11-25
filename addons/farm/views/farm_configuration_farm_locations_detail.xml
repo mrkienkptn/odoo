@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+
+    <record id="farm_configuration_farmer_detail" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit.farm.configuration.farmer</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+
+        <notebook position="inside">
+          <page string="Farmer Details">
+            <group >
+              <field string="Is Farmer?" name="is_farmer"/>
+            </group>
+            <group >
+              <field string="Is Animals?" name="is_animal"/>
+            </group>
+            <group >
+              <field string="Is Location?" name="is_location"/>
+            </group>
+          </page>
+        </notebook>
+
+        <field name="is_location" />
+        <t t-if="record.is_location.raw_value == true">
+          <notebook>
+            <page string="Crops">
+              <field name="crop_ids" />
+            </page>
+          </notebook>
+        </t>
+        <!-- </xpath> -->
+      </field>
+    </record>
+
+  </data>
+
+</odoo>

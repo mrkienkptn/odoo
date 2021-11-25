@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="farm_crops_action" model="ir.actions.act_window">
+        <field name="name">Crops</field>
+        <field name="res_model">farm.crops</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+    <record id="farm_crops_view_tree" model="ir.ui.view">
+        <field name="name">farm.crops.tree</field>
+        <field name="model">farm.crops</field>
+        <field name="arch" type="xml">
+            <tree string="Crops">
+                <field name="name" />
+                <field name="date_from" />
+                <field name="month_from" />
+                <field name="date_to" />
+                <field name="month_to" />
+                <field name="wharehouse" />
+                <field name="stock_location" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+    
+</odoo>
