@@ -11,9 +11,9 @@
         <field name="model">farm.configuration</field>
         <field name="arch" type="xml">
             <tree string="Stages">
-                <!-- <field name="name" /> -->
-                <!-- <field name="buyer" />
-                <field name="seller" /> -->
+                <field name="stage_name" />
+                <field name="stage_folded_in_kanban" />
+                <field name="stage_description" />
             </tree>
         </field>
     </record>

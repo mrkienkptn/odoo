@@ -5,4 +5,6 @@ from . import farm_incidents
 from . import farm_dieases_cure
 from . import farm_projects
 from . import farm_configuration
+from . import farm_configuration_partner
+from . import farm_configuration_fleet
 

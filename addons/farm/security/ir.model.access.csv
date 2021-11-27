@@ -7,3 +7,4 @@ access_farm_dieases_cure,access_farm_dieases_cure,model_farm_dieases_cure,base.g
 access_projects,access_farm_projects,model_farm_projects,base.group_user,1,1,1,1
 access_configuration,access_farm_configuration,model_farm_configuration,base.group_user,1,1,1,1
 access_res_partner,access_res_partner,model_res_partner,base.group_user,1,1,1,1
+access_farm_configuration_fleet,access_farm_configuration_fleet,model_farm_configuration_fleet,base.group_user,1,1,1,1
