@@ -9,7 +9,6 @@
     'data': [
         'data/res.country.state.csv',
         'security/ir.model.access.csv',
-        
         'views/farm_crop_requests.xml',
         'views/farm_configuration_animals.xml',
         'views/farm_configuration_farm_locations.xml',
