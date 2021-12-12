@@ -1,0 +1,1 @@
+odoo -c config/odoo_local.conf

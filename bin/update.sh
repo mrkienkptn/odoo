@@ -1,0 +1,1 @@
+odoo -u farm -d odoo
