@@ -9,3 +9,4 @@ class FarmCropRequests(models.Model):
   stock_location = fields.Char()
   description = fields.Char()
   image = fields.Image("Image")
+  diseases_cure_ids = fields.Many2many("farm.dieases.cure")
