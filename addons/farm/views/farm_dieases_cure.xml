@@ -1,21 +1,89 @@
 <?xml version="1.0"?>
+<!--<odoo>-->
+<!--    <record id="farm_dieases_cure_action" model="ir.actions.act_window">-->
+<!--        <field name="name">Dieases Cure</field>-->
+<!--        <field name="res_model">farm.dieases.cure</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+
+<!--    </record>-->
+<!--    <record id="farm_dieases_cure_view_tree" model="ir.ui.view">-->
+<!--        <field name="name">farm.dieases.cure.tree</field>-->
+<!--        <field name="model">farm.dieases.cure</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Dieases Cure">-->
+<!--                &lt;!&ndash; <field name="name" /> &ndash;&gt;-->
+<!--                &lt;!&ndash; <field name="buyer" />-->
+<!--                <field name="seller" /> &ndash;&gt;-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->
+
+
+
+
+<!--<odoo>-->
+<!--  <record id="farm_dieases_cure_action" model="ir.actionsact_window">-->
+<!--    <field name="name">Diseases View</field>-->
+<!--    <field name="model">farm.dieases.cure</field>-->
+<!--    <field name="view_mode">tree, form</field>-->
+<!--    <field name="arch" type="xml">-->
+<!--        <form>-->
+<!--            <field name = "name"/>-->
+<!--            <field name = "description"/>-->
+<!--        </form>-->
+<!--    </field>-->
+<!--  </record>-->
+<!--&lt;!&ndash;  <record id="farm_dieases_cure_action" model="ir.actionsact_window">&ndash;&gt;-->
+<!--&lt;!&ndash;    <field name="name">Diseases</field>&ndash;&gt;-->
+<!--&lt;!&ndash;    <field name="res_model">farm.dieases.cure</field>&ndash;&gt;-->
+<!--&lt;!&ndash;    <field name="view_mode">kanban,tree,form</field>&ndash;&gt;-->
+<!--&lt;!&ndash;    <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'kanban', 'view_id': ref('diseases_cure')})]" />&ndash;&gt;-->
+<!--&lt;!&ndash;  </record>&ndash;&gt;-->
+<!--</odoo>-->
+
+
 <odoo>
     <record id="farm_dieases_cure_action" model="ir.actions.act_window">
-        <field name="name">Dieases Cure</field>
+        <field name="name">Dieases</field>
         <field name="res_model">farm.dieases.cure</field>
         <field name="view_mode">tree,form</field>
-
     </record>
-    <record id="farm_dieases_cure_view_tree" model="ir.ui.view">
-        <field name="name">farm.dieases.cure.tree</field>
+    <record id="farm_díeases_cure_view_tree" model="ir.ui.view">
+        <field name="name">farm.díeases.cure.tree</field>
         <field name="model">farm.dieases.cure</field>
         <field name="arch" type="xml">
-            <tree string="Dieases Cure">
-                <!-- <field name="name" /> -->
-                <!-- <field name="buyer" />
-                <field name="seller" /> -->
+            <tree >
+                <field name="image" widget="image" class="oe_left oe_avatar"/>
+                <field name="name" />
+                <field name="description"/>
             </tree>
         </field>
     </record>
-    
+    <record id="farm_díeases_cure_view_form" model="ir.ui.view">
+        <field name="name">farm.díeases.cure.form</field>
+        <field name="model">farm.dieases.cure</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_left oe_avatar"/>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page String="Crops"></page>
+                    </notebook>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
 </odoo>

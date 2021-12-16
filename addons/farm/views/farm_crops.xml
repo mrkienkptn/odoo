@@ -32,12 +32,37 @@
                         <field name="name" />
                         <field name="date_from" />
                         <field name="date_to" />
+
                     </group>
                     <group>
                         <field name="wharehouse" />
                         <field name="stock_location" />
                         <field name="description" />
                     </group>
+
+                    <sheet>
+                        <notebook>
+                            <page string = "Crop Materials">
+                            </page>
+
+                            <page string = "Crop Labours">
+                            </page>
+
+                            <page string = "Crop Overheads">
+                            </page>
+
+                            <page string = "Crop Diseases">
+                                <field name="diseases_cure_ids"/>
+                            </page>
+
+                            <page string = "Crop Processes">
+                            </page>
+
+                            <page string = "Description">
+                            </page>
+                        </notebook>
+                    </sheet>
+
 
             </sheet>
         </form>
