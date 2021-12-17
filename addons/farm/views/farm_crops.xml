@@ -27,7 +27,6 @@
             <form>
                 <sheet>
                     <field name="image" widget="image" class="oe_left oe_avatar"/>
-
                     <group>
                         <field name="name" />
                         <field name="date_from" />

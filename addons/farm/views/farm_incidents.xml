@@ -1,21 +1,42 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="farm_incidents_action" model="ir.actions.act_window">
-        <field name="name">Incidents</field>
+        <field name="name">Crop Incidents</field>
         <field name="res_model">farm.incidents</field>
         <field name="view_mode">tree,form</field>
-
     </record>
     <record id="farm_incidents_view_tree" model="ir.ui.view">
         <field name="name">farm.incidents.tree</field>
         <field name="model">farm.incidents</field>
         <field name="arch" type="xml">
             <tree string="Incidents">
-                <!-- <field name="name" /> -->
-                <!-- <field name="buyer" />
-                <field name="seller" /> -->
+                <field name="name" />
+                <field name="crop_id" />
+                <field name="task" />
+                <field name="datetime" />
+                <field name="location" />
+                <field name="description" />
             </tree>
         </field>
     </record>
-    
+
+    <record id="farm_crops_view_form" model="ir.ui.view">
+        <field name="name">farm.incidents.form</field>
+        <field name="model">farm.incidents</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="crop_id" />
+                        <field name="task" />
+                    </group>
+                    <group>
+                        <field name="datetime" />
+                        <field name="location" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 </odoo>

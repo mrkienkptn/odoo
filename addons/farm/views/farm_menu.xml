@@ -4,7 +4,7 @@
     <menuitem id="farm_menu_root" name="My Farm" web_icon="farm,static/description/icon.png">
 
         <menuitem id="crop_requests_menu" name="Crop Requests">
-            <menuitem id="farm_crop_request_menu_action" action="farm_crop_requests_action" name="Crop Requestsss"/>
+            <menuitem id="farm_crop_request_menu_action" action="farm_crop_requests_action" name="Crop Requests"/>
         </menuitem>
 
         <menuitem id="crops_menu" name="Crops">
