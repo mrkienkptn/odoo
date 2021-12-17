@@ -44,6 +44,18 @@
         </field>
     </record>
 
+    <record id="farm_crop_requests_view_form" model="ir.ui.view">
+        <field name="name">farm.crop.requests.form</field>
+        <field name="model">farm.crop.requests</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="farm_crop_requests_view_calendar" model="ir.ui.view">
         <field name="name">farm.crop.requests.view.calendar</field>
         <field name="model">farm.crop.requests</field>
@@ -66,7 +78,8 @@
             eval="[(5, 0, 0), 
             (0, 0, {'view_mode': 'kanban', 'view_id': ref('farm_crop_requests_view_kanban')}, {}),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('farm_crop_requests_view_tree')}, {}),
-            (0, 0, {'view_mode': 'calendar', 'view_id': ref('farm_crop_requests_view_calendar')}, {})
+            (0, 0, {'view_mode': 'calendar', 'view_id': ref('farm_crop_requests_view_calendar')}, {}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('farm_crop_requests_view_form')}, {})
             ]" />
     </record>
 </odoo>
