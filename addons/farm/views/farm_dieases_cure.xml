@@ -1,21 +1,41 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="farm_dieases_cure_action" model="ir.actions.act_window">
-        <field name="name">Dieases Cure</field>
-        <field name="res_model">farm.dieases.cure</field>
-        <field name="view_mode">tree,form</field>
-
-    </record>
+    
     <record id="farm_dieases_cure_view_tree" model="ir.ui.view">
         <field name="name">farm.dieases.cure.tree</field>
         <field name="model">farm.dieases.cure</field>
         <field name="arch" type="xml">
             <tree string="Dieases Cure">
-                <!-- <field name="name" /> -->
-                <!-- <field name="buyer" />
-                <field name="seller" /> -->
+                <field name="name" />
+                <field name="description" />
             </tree>
         </field>
     </record>
-    
+    <record id="farm_dieases_cure_view_form" model="ir.ui.view">
+        <field name="name">farm.dieases.cure.form</field>
+        <field name="model">farm.dieases.cure</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="image" widget="image" />
+                    </group>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="farm_dieases_cure_action" model="ir.actions.act_window">
+        <field name="name">Dieases Cure</field>
+        <field name="res_model">farm.dieases.cure</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('farm_dieases_cure_view_tree')}, {}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('farm_dieases_cure_view_form')}, {})        
+        ]" />
+    </record>
 </odoo>

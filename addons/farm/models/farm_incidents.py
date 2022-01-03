@@ -9,4 +9,4 @@ class FarmIncidents(models.Model):
     task = fields.Char(required=True)
     datetime = fields.Datetime()
     description = fields.Char()
-    location = fields.Char()
+    location_id = fields.Many2one('res.partner', string="Location")

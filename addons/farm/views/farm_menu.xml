@@ -8,31 +8,28 @@
         </menuitem>
 
         <menuitem id="crops_menu" name="Crops">
-            <!-- <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_property_type_action"/> -->
+            
             <menuitem id="farm_crops_menu_action" name="Crops" action="farm_crops_action"/>
         </menuitem>
         
         <menuitem id="incidents_menu" name="Incidents">
-            <!-- <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_property_type_action"/> -->
+            
             <menuitem id="farm_incidents_menu_action" name="Incidents" action="farm_incidents_action"/>
         </menuitem>
 
         <menuitem id="dieases_cure_menu" name="Dieasas Cure">
-            <!-- <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_property_type_action"/> -->
+            
             <menuitem id="farm_dieases_cure_menu_action" name="Dieases Cure" action="farm_dieases_cure_action"/>
         </menuitem>
 
-        <menuitem id="projects_menu" name="Projects">
-            <!-- <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_property_type_action"/> -->
-            <menuitem id="farm_projects_menu_action" name="Projects" action="farm_projects_action"/>
+        <menuitem id="projects_menu" name="Projects">            
+            <menuitem id="farm_projects_menu_action" name="Projects" action="project.open_view_project_all"/>
         </menuitem>
 
         <menuitem id="configuration_menu" name="Configuration">
-            <!-- <menuitem id="estate_property_type_menu_action" name="Property Types" action="estate_property_type_action"/> -->
+            
             <menuitem id="farm_configuration_farmers_menu_action" name="Farmers" action="farm_configuration_farmers_action" />
             <menuitem id="farm_configuration_farm_locations_menu_action" name="Farm Locations" action="farm_configuration_farm_locations_action" />
-            <menuitem id="farm_configuration_animals_menu_action" name="Animals" action="farm_configuration_animals_action"/>
-            <menuitem id="farm_configuration_fleets_menu_action" name="Fleets" action="farm_configuration_fleets_action"/>
             <menuitem id="farm_configuration_stages_menu_action" name="Stages" action="farm_configuration_stages_action"/>
         </menuitem>
             

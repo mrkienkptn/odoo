@@ -1,21 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="farm_projects_action" model="ir.actions.act_window">
-        <field name="name">Projects</field>
-        <field name="res_model">farm.projects</field>
-        <field name="view_mode">tree,form</field>
 
-    </record>
-    <record id="farm_projects_view_tree" model="ir.ui.view">
-        <field name="name">farm.projects.tree</field>
-        <field name="model">farm.projects</field>
-        <field name="arch" type="xml">
-            <tree string="Projects">
-                <!-- <field name="name" /> -->
-                <!-- <field name="buyer" />
-                <field name="seller" /> -->
-            </tree>
-        </field>
-    </record>
-    
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="domain">[('user_id', '=', uid)]</field>
+    </record> 
 </odoo>

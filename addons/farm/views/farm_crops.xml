@@ -1,10 +1,17 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="farm_crops_action" model="ir.actions.act_window">
-        <field name="name">Crops</field>
-        <field name="res_model">farm.crops</field>
-        <field name="view_mode">tree,form</field>
-
+    <record id="farm_crops_view_quick_create" model="ir.ui.view">
+        <field name="name">farm.crops.quick.create</field>
+        <field name="model">farm.crops</field>
+        <field name="priority">1001</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                    <field name="image" />
+                </group>
+            </form>
+        </field>
     </record>
     <record id="farm_crops_view_tree" model="ir.ui.view">
         <field name="name">farm.crops.tree</field>
@@ -12,10 +19,8 @@
         <field name="arch" type="xml">
             <tree string="Crops">
                 <field name="name" />
-                <field name="date_from" />
-                <field name="date_to"/>
-                <field name="wharehouse" />
-                <field name="stock_location" />
+                <field string="Period start" name="date_from" />
+                <field string="Period end" name="date_to"/>
                 <field name="description" />
             </tree>
         </field>
@@ -26,21 +31,62 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <field name="image" widget="image" class="oe_left oe_avatar"/>
+                    <field name="image" widget="image"/>
+
                     <group>
                         <field name="name" />
-                        <field name="date_from" />
-                        <field name="date_to" />
+                        <field string="Crop Period Start" name="date_from" />
+                        <field string="Crop Period End"  name="date_to" />
                     </group>
                     <group>
-                        <field name="wharehouse" />
-                        <field name="stock_location" />
-                        <field name="description" />
+                        <field name="warehouse_id" />
+                        <field name="stock_location_id" />
                     </group>
+                    <notebook>
+                        
+                        <page string="Crop Dieases">
+                            <field name="dieases_cure_ids">
+                                <field name="name" />
+                                <field name="description" />
+                            </field>
+                        </page>
+                        <page string="Crop Incidents">
+                            <field name="incident_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="farm_crops_view_kanban" model="ir.ui.view">
+        <field name="name">farm.crops.view.kanban</field>
+        <field name="model">farm.crops</field>
+        <field name="arch" type="xml">
+            <kanban on_create="quick_create" quick_create_view="farm.farm_crops_view_quick_create">
+                <field name="name" />
+                <field name="image" />
 
-            </sheet>
-        </form>
-    </field>
-</record>
-
+                <templates>
+                    <t t-name="kanban-box" >
+                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center" class="oe_kanban_global_click" >
+                                <field name="image" widget="image" style="width: 50px" />
+                            <div style="width: 60%; flex-grow: 1; font-size: 16px; font-weight: bold; margin-left: 5px; text-align: center; ">
+                                <field name="name"  />
+                            </div>
+                        </div>                        
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="farm_crops_action" model="ir.actions.act_window">
+        <field name="name">Crops</field>
+        <field name="res_model">farm.crops</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'kanban', 'view_id': ref('farm_crops_view_kanban')}, {}),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('farm_crops_view_tree')}, {}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('farm_crops_view_form')}, {})              
+        ]" />
+    </record>
 </odoo>

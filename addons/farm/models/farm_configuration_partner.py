@@ -3,29 +3,18 @@ from odoo import fields, models, api
 class FarmConfigurationPartner(models.Model):
   _inherit = 'res.partner'
   is_farmer = fields.Boolean(
-    compute = "_compute_is_farmer"
+    default = False
   )
-  is_animal = fields.Boolean(
-    ompute = "_compute_is_animal"
-  )
-  is_location = fields.Boolean(
-    ompute = "_compute_is_location"
+  is_location = fields.Boolean(    
+    default = False
   )
   crop_ids = fields.Many2many('farm.crops', string = 'Crops')
-  @api.depends("is_animal", "is_location")
-  def _compute_is_farmer(self):
-    for record in self:
-      if record.is_animal or record.is_location:
-        record.is_farmer = False
 
-  @api.depends("is_farmer", "is_location")
-  def _compute_is_animal(self):
-    for record in self:
-      if record.is_farmer or record.is_location:
-        record.is_animal = False
+  @api.onchange('is_farmer')
+  def _onchange_is_farmer(self):
+    self.is_location = False
 
-  @api.depends("is_animal", "is_farmer")
-  def _compute_is_location(self):
-    for record in self:
-      if record.is_animal or record.is_farmer:
-        record.is_location = False
+  @api.onchange('is_location')
+  def _onchange_is_location(self):
+    self.is_farmer = False
+  

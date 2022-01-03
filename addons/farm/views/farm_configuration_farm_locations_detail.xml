@@ -13,14 +13,14 @@
             <group >
               <field string="Is Farmer?" name="is_farmer"/>
             </group>
-            <group >
+            <!-- <group >
               <field string="Is Animals?" name="is_animal"/>
-            </group>
+            </group> -->
             <group >
               <field string="Is Location?" name="is_location"/>
             </group>
           </page>
-          <page string="Crops">
+          <page attrs="{'invisible': [('is_farmer', '=', True)]}" string="Crops">
               <field name="crop_ids" />
             </page>
         </notebook>

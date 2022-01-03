@@ -1,10 +1,24 @@
 <?xml version="1.0"?>
 <odoo>
+    <record id="farm_crop_requests_view_form_quick_create" model="ir.ui.view">
+        <field name="name">farm.crop.requests.view.form.quick.create</field>
+        <field name="model">farm.crop.requests</field>
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                    <field name="crop_id" />
+                    <field name="responsible_user_id" domain="[('is_farmer', '=', 1)]" />
+                </group>
+            </form>
+        </field>
+    </record>
     <record id="farm_crop_requests_view_kanban" model="ir.ui.view">
         <field name="name">farm.crop.requests.kanban</field>
         <field name="model">farm.crop.requests</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="stage_id" on_create="quick_create" >
+            <kanban default_group_by="stage_id" on_create="quick_create" quick_create_view="farm.farm_crop_requests_view_form_quick_create">
                 <field name="name"/>
                 <field name="responsible_user_id"/>
                 <field name="stage_id"/>
@@ -14,12 +28,23 @@
                 <field name="code" />
                 <field name="crop_id" />
                 <templates>
-                    <t t-name="kanban-box" >
+                    <t t-name="kanban-box">
                         <div style="margin-bottom: 5px" class="oe_kanban_global_click">
-                            <h4><field name="code" /></h4>
-                            <div><span style="font-weight: bold">Name: </span> <field name="name" /></div>
-                            <div><span style="font-weight: bold">Crop: </span> <field name="crop_id" /></div>
-                            <div><span style="font-weight: bold">Responsible User: </span> <field name="responsible_user_id" /></div>
+                            <h4>
+                                <field name="code" />
+                            </h4>
+                            <div>
+                                <span style="font-weight: bold">Name: </span>
+                                <field name="name" />
+                            </div>
+                            <div>
+                                <span style="font-weight: bold">Crop: </span>
+                                <field name="crop_id" />
+                            </div>
+                            <div>
+                                <span style="font-weight: bold">Responsible User: </span>
+                                <field name="responsible_user_id" />
+                            </div>
                         </div>
                     </t>
                 </templates>
@@ -31,24 +56,76 @@
         <field name="model">farm.crop.requests</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="code" />
                 <field name="name" />
                 <field name="responsible_user_id"/>
-                <field name="stage_id"/>
+                <field name="stage_id">
+                    <field name="name" />
+                </field>
                 <field name="supervisor_id" />
+                <field name="crop_id" />
                 <field name="start_date" />
                 <field name="end_date" />
-                <field name="code" />
+
             </tree>
         </field>
     </record>
 
-    <record id="farm_crop_requests_view_form" model="ir.ui.view">
+    <record model="ir.ui.view" id="farm_crop_requests_view_form">
         <field name="name">farm.crop.requests.form</field>
         <field name="model">farm.crop.requests</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Crop Requests">
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}">
+                        <field name="name" />
+                    </field>
+                </header>
+
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_dieases" type="object" class="oe_stat_button" icon="fa-bug">
+                            <div class="o_stat_info">
+                                <field name="dieases_cure_count" />
+                                Dieases
+                            </div>
+                        </button>
+                        <button name="action_open_tasks" type="object" class="oe_stat_button" icon="fa-tasks">
+                            <div class="o_stat_info">
+                                <field name="task_count" />
+                                Tasks
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h2>
+                            <field name="code" />
+                        </h2>
+                    </div>
+                    <group>
+
+                        <h2 style="color:green;">
+                            <field name="crop_id" />
+                        </h2>
+
+                        <group>
+                            <field name="name" />
+                            <field name="responsible_user_id" domain="[('is_farmer', '=', 1)]" />
+                            <field name="supervisor_id" />
+                        </group>
+                        <group>
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field style="font-size: 16px; font-weight:bold; color:green" name="project_id" />
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page name="Description" >
+                            <field name="description" />
+                        </page>
                     
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -58,26 +135,38 @@
         <field name="name">farm.crop.requests.view.calendar</field>
         <field name="model">farm.crop.requests</field>
         <field name="arch" type="xml">
-            <calendar string="" date_start="start_date" date_stop="end_date" color="color" mode="month">
-                <field name="name" />
+            <calendar string="" date_start="start_date" date_stop="end_date" mode="month">
+                <field name="code" />
                 <field name="responsible_user_id"/>
                 <field name="stage_id"/>
                 <field name="supervisor_id" />
+                <field name="crop_id" filters="1" color="name" avatar_field="image"/>
             </calendar>
         </field>
     </record>
-
+    <record id="farm_crop_requests_view_graph" model="ir.ui.view">
+        <field name="name">farm.crop.requests.view.graph</field>
+        <field name="model">farm.crop.requests</field>
+        <field name="arch" type="xml">
+            <graph string="Crop Requests"  >
+            <field name="crop_id"  />
+                <field name="stage_id"  />
+                
+            </graph>
+        </field>
+    </record>
     <record id="farm_crop_requests_action" model="ir.actions.act_window">
         <field name="name">Crop Requests</field>
         <field name="res_model">farm.crop.requests</field>
-        <field name="view_mode">kanban,tree,form,calendar</field>
-        <field 
-            name="view_ids" 
-            eval="[(5, 0, 0), 
+        <field name="view_mode">kanban,tree,form,calendar,graph</field>
+
+        <field name="view_ids" eval="[(5, 0, 0), 
             (0, 0, {'view_mode': 'kanban', 'view_id': ref('farm_crop_requests_view_kanban')}, {}),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('farm_crop_requests_view_tree')}, {}),
             (0, 0, {'view_mode': 'calendar', 'view_id': ref('farm_crop_requests_view_calendar')}, {}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('farm_crop_requests_view_form')}, {})
+            (0, 0, {'view_mode': 'form', 'view_id': ref('farm_crop_requests_view_form')}, {}),
+            (0, 0, {'view_mode': 'graph', 'view_id': ref('farm_crop_requests_view_graph')}, {})
             ]" />
+        
     </record>
 </odoo>
