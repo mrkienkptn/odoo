@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="farm_crop_process_view_tree" model="ir.ui.view">
+        <field name="name">farm.crop.process.tree</field>
+        <field name="model">farm.crop.process</field>
+        <field name="arch" type="xml">
+            <tree string="Crop processes">
+                <field name="name" />
+                <field name="crop_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="farm_crop_process_view_form" model="ir.ui.view">
+        <field name="name">farm.crop.process.form</field>
+        <field name="model">farm.crop.process</field>
+        <field name="arch" type="xml">
+            <form string="Crop processes">
+                <sheet>
+                    <group >
+                        <field string="Task" name="name" />
+                    </group>
+                    <group>
+                        <field name="crop_id" />
+                    </group>
+                    <notebook>
+                        <page  string="Description">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        <record id="farm_crop_process_action" model="ir.actions.act_window">
+        <field name="name">Crop process</field>
+        <field name="res_model">farm.crop.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0), 
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('farm_crop_process_view_tree')}, {}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('farm_crop_process_view_form')}, {})
+            ]" />
+    </record>
+</odoo>

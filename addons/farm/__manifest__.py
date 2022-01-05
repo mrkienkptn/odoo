@@ -20,7 +20,7 @@
         'views/farm_dieases_cure.xml',
         'views/farm_incidents.xml',
         'views/farm_projects.xml',
-        'views/farm_tasks.xml',
+        'views/farm_crop_process.xml',
         'views/farm_crop_requests.xml',
         'views/farm_menu.xml',
     ],

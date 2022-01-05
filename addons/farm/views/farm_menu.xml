@@ -7,9 +7,9 @@
             <menuitem id="farm_crop_request_menu_action" action="farm_crop_requests_action" name="Crop Requests"/>
         </menuitem>
 
-        <menuitem id="crops_menu" name="Crops">
-            
+        <menuitem id="crops_menu" name="Crops">            
             <menuitem id="farm_crops_menu_action" name="Crops" action="farm_crops_action"/>
+            <menuitem id="farm_crop_process_menu_action" name="Crop Process" action="farm_crop_process_action"/>
         </menuitem>
         
         <menuitem id="incidents_menu" name="Incidents">

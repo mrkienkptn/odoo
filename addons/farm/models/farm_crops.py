@@ -9,6 +9,7 @@ class FarmCrops(models.Model):
   stock_location_id = fields.Many2one("stock.location", string="Stock Location")
   description = fields.Char()
   image = fields.Image("Image")
+  crop_process_ids = fields.One2many('farm.crop.process', 'crop_id', string='Crop Processes')
   incident_ids = fields.Many2many("farm.incidents", string="Crop Incidents")
   dieases_cure_ids = fields.Many2many("farm.dieases.cure", string="Dieses Cures")
   dieases_cure_count = fields.Integer(compute="_compute_dieases_cure_count")

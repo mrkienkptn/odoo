@@ -75,5 +75,5 @@ class FarmCropRequests(models.Model):
       'res_model': 'farm.dieases.cure',
       'action': 'farm.farm_dieases_cure_action',
       'domain': [('crop_ids', '=', self.crop_id.id)],
-      'view_mode': 'tree'
+      'view_mode': 'tree,form'
     }

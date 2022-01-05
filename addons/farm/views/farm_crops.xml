@@ -21,7 +21,6 @@
                 <field name="name" />
                 <field string="Period start" name="date_from" />
                 <field string="Period end" name="date_to"/>
-                <field name="description" />
             </tree>
         </field>
     </record>
@@ -52,6 +51,17 @@
                         </page>
                         <page string="Crop Incidents">
                             <field name="incident_ids" />
+                        </page>
+                        <page  string="Crop Processes">
+                            <field name="crop_process_ids" >
+                                <tree editable="bottom" widget="handle">
+                                    <field name="name" string="Task" />
+                                </tree>
+                            </field>                   
+                            
+                        </page>
+                        <page  string="Description">
+                            <field name="description" />
                         </page>
                     </notebook>
                 </sheet>

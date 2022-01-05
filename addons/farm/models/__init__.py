@@ -7,5 +7,5 @@ from . import farm_projects
 from . import farm_configuration
 from . import farm_configuration_partner
 from . import farm_configuration_fleet
-from . import farm_tasks
+from . import farm_crop_process
 

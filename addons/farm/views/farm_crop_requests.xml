@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <span style="font-weight: bold">Responsible User: </span>
-                                <field name="responsible_user_id" />
+                                <field name="responsible_user_id" widget="many2one_avatar" />
                             </div>
                         </div>
                     </t>
@@ -58,7 +58,7 @@
             <tree>
                 <field name="code" />
                 <field name="name" />
-                <field name="responsible_user_id"/>
+                <field name="responsible_user_id" widget="many2one_avatar" />
                 <field name="stage_id">
                     <field name="name" />
                 </field>
@@ -110,7 +110,7 @@
 
                         <group>
                             <field name="name" />
-                            <field name="responsible_user_id" domain="[('is_farmer', '=', 1)]" />
+                            <field name="responsible_user_id"  widget="many2one_avatar" domain="[('is_farmer', '=', 1)]" />
                             <field name="supervisor_id" />
                         </group>
                         <group>
@@ -121,7 +121,7 @@
 
                     </group>
                     <notebook>
-                        <page name="Description" >
+                        <page string="Description" >
                             <field name="description" />
                         </page>
                     
